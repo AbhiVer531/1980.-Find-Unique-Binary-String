@@ -1,0 +1,20 @@
+class Solution:
+    def findDifferentBinaryString(self, nums: List[str]) -> str:
+        length = len(nums)
+        myset = set(nums)
+        def helper(new):
+            if len(new) == length:
+                if new not in myset:
+                    return new
+                else:
+                    return None  
+            new0 = new + "0"
+            result = helper(new0)
+            if result is not None:
+                return result
+            new1 = new + "1"
+            result = helper(new1)
+            if result is not None:
+                return result
+            return None
+        return helper("")
